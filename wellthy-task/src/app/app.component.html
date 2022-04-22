@@ -1,0 +1,20 @@
+<div class="container">
+  <div>
+    <img src="../assets/images/welthy_logo.png" alt="">
+  </div>
+  <p class="main-text">Download & install the app for more details</p>
+  <div class="d-flex">
+  <a href=""><img src="../assets/images/google-play-badge.png"></a>
+  <a href=""><img src="../assets/images/app-store-badge1.png"></a>
+  </div>
+  <div class="contact-box d-flex" >
+    <p class="info">or, enter your mobile number to get the link</p>
+    <div class="d-flex">
+      <div class="input-box">
+        <input maxlength="10" class="ripple" type="text" [formControl]="number">
+        <label for="">+91 <span>^</span> </label>
+      </div>
+      <button class="ripple" [disabled]="!number.value || number.value.length<10">Get link</button>
+    </div>
+  </div>
+</div>

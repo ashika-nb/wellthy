@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    position: relative;
+    background-image: url("../src/assets/images/wellthy_bg.png");
+    background-repeat:no-repeat;
+    background-size:80% 100vh;
+    background-position: right top;
+    font-family:   Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: normal;
+    -moz-osx-font-smoothing: grayscale;
+-webkit-font-smoothing: antialiased;
+}
