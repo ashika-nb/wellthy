@@ -7,9 +7,10 @@
 }
 
 .container {
-    margin-left: 100px;
-    margin-top: 100px;
-    width: 700px;
+    padding-left: 150px;
+    padding-top: 100px;
+    max-width: 700px;
+    width: 100%;
     p {
         &.main-text {
             font-weight: 500;
@@ -47,11 +48,9 @@
             letter-spacing: 6px;
             font-size: 16px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            &:focus{
-
+            &:focus {
                 outline: none;
             }
-           
         }
         .input-box {
             position: relative;
@@ -61,7 +60,7 @@
             left: 12px;
             color: #444;
             top: 9px;
-            span{
+            span {
                 font-size: 12px;
                 color: #fb8e38;
             }
@@ -69,32 +68,134 @@
         button {
             @include properties(#fb8e38, none, 10px, 130px, 40px);
             color: #fff;
-            
-            &:disabled{
-               background-color:  #bfbbbb;
-               color: #fff;
-            }
-            &.ripple{
-                position: relative;
-                overflow: hidden; 
-              }
-              &.ripple:before {
-                border-radius: 50%;
-                background-color: rgba(255,255,255,0.6);
-                content:'';
+
+            .succes-c {
+                padding-left: 30px;
                 position: absolute;
-                top: 50%; left: 50%;
-                width:0; height:0;
-              }
-              &.ripple:focus:before {
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                
+                .tick {
+                    position: absolute;
+                    left: 30px;
+                    top: 10px;
+                    transition: all 0.3s ease;
+                    transition-delay: 1s;
+                    
+                    span {
+                        width: 20px;
+                        height: 20px;
+                        background-color: #fff;
+                        border-radius: 50%;
+                        color: #549c45;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transition: all ease 0.3s;
+                        transform: translate(-50%, -50%) scale(0);
+                        font-weight: 700;
+                        font-family: system-ui;
+                        opacity: 0;
+                        line-height: 1.5;
+                    }
+                }
+
+                p {
+                    font-size: 18px;
+                    margin: 0;
+                    font-weight: 700;
+                    opacity: 0;
+                    transition: all 0.3s ease 1s;
+                }
+            }
+
+            &:disabled {
+                background-color: #bfbbbb;
+                color: #fff;
+            }
+            &.ripple {
+                position: relative;
+                overflow: hidden;
+            }
+            &.ripple:before {
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.6);
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+            }
+            &.ripple:focus:before {
                 transition: all 0.5s ease-out;
-                opacity:0;
-                width:160px;
-                height:160px;
-                margin-top:-80px;
-                margin-left:-80px;
-              }
-      
+                opacity: 0;
+                width: 160px;
+                height: 160px;
+                margin-top: -80px;
+                margin-left: -80px;
+            }
+            &.active {
+                background-color: #549c45;
+
+                .default {
+                    display: none;
+                }
+
+                .succes-c {
+                    display: flex;
+                    opacity: 1;
+
+                    .tick {
+                        left: 15px;
+
+                        span {
+                            transform: translate(-50%, -50%) scale(1);
+                            opacity: 1;
+                        }
+                    }
+
+                    p {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            &::after {
+                content: "";
+                display: block;
+                width: 1.2em;
+                height: 1.2em;
+                position: absolute;
+                left: calc(50% - 0.75em);
+                top: calc(50% - 0.75em);
+                border: 0.15em solid transparent;
+                border-right-color: white;
+                border-radius: 50%;
+                animation: button-anim 0.7s linear infinite;
+                opacity: 0;
+            }
+
+
+
+            @keyframes button-anim {
+                from {
+                    transform: rotate(0);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            &.loading {
+                color: transparent;
+            }
+
+            &.loading::after {
+                opacity: 1;
+            }
         }
     }
 }

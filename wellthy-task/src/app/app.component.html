@@ -14,7 +14,17 @@
         <input maxlength="10" class="ripple" type="text" [formControl]="number">
         <label for="">+91 <span>^</span> </label>
       </div>
-      <button class="ripple" [disabled]="!number.value || number.value.length<10">Get link</button>
+      <button class="ripple" [disabled]="!number.value || number.value.length<1" [ngClass]="{'active': status,'loading':loading}" (click)="onClick()">
+        <span *ngIf="!status">Get link</span>
+        <div class="succes-c">
+          <div class="tick">
+            <span>✓</span>
+          </div>
+          <p>
+            Sent
+          </p>
+        </div>
+      </button>
     </div>
   </div>
 </div>
